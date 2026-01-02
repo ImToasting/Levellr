@@ -6,7 +6,8 @@
   <title>My Discord Bot</title>
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=DM+Sans:ital,wght@0,100..1000;1,100..1000&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&family=Open+Sans:wght@300..800&family=DM+Sans:wght@100..1000&display=swap');
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 
     * {
       margin: 0;
@@ -14,21 +15,28 @@
       border: 0;
       box-sizing: border-box;
       font: inherit;
-      vertical-align: baseline;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
       min-height: 100vh;
-      background-color: #001e12;
+      background-color: #0b251c;
       color: #ffffff;
       font-family: 'Montserrat', sans-serif;
-      font-weight: 400;
       line-height: 26px;
       -webkit-font-smoothing: antialiased;
     }
 
     h1, h2, h3, h4, h5, h6 {
       font-family: 'Open Sans', sans-serif;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
     }
 
     #header-outer {
@@ -50,12 +58,6 @@
       font-size: 18px;
       line-height: 28px;
       letter-spacing: -0.25px;
-      color: #ffffff;
-    }
-
-    .site-title {
-      font-size: 18px;
-      letter-spacing: -0.25px;
     }
 
     .header-nav {
@@ -64,25 +66,16 @@
     }
 
     .header-nav a {
-      text-decoration: none;
-      color: #ffffff;
-      font-size: 18px;
-      line-height: 28px;
-      letter-spacing: -0.25px;
+      color: #fff;
     }
 
     .hero {
       position: relative;
-      width: 100%;
       min-height: 725px;
       display: flex;
       align-items: center;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 18px;
-      line-height: 28px;
-      letter-spacing: -0.25px;
-      color: #ffffff;
       overflow: hidden;
+      font-family: 'DM Sans', sans-serif;
     }
 
     .hero-bg {
@@ -93,14 +86,13 @@
       background-position: center;
       backface-visibility: hidden;
       transform: translate3d(0,0,0);
-      transform-style: preserve-3d;
       z-index: 1;
     }
 
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background-color: rgba(11, 37, 28, 0.6);
+      background: rgba(11, 37, 28, 0.6);
       z-index: 2;
     }
 
@@ -110,16 +102,12 @@
       max-width: 1100px;
       padding: 0 70px;
       margin: 0 auto;
-      display: flex;
-      flex-direction: column;
     }
 
     .hero h1 {
-      font-family: 'Open Sans', sans-serif;
       font-size: 42px;
       line-height: 52px;
       margin-bottom: 20px;
-      max-width: 900px;
     }
 
     .hero p {
@@ -131,7 +119,6 @@
     .buttons {
       display: flex;
       gap: 16px;
-      flex-wrap: wrap;
     }
 
     .btn {
@@ -144,20 +131,18 @@
 
     .btn.primary {
       background: #9eff63;
-      color: #000000;
+      color: #000;
     }
 
     .btn.secondary {
-      background: #ffffff;
-      color: #000000;
+      background: #fff;
+      color: #000;
     }
 
     .info-container {
       background-color: #001e12;
       padding: 80px 24px;
-      width: 100%;
       font-family: 'DM Sans', sans-serif;
-      color: #ffffff;
     }
 
     .info-grid {
@@ -172,7 +157,6 @@
       font-size: 24px;
       line-height: 34px;
       letter-spacing: -0.75px;
-      font-weight: 400;
       margin-bottom: 18px;
     }
 
@@ -181,9 +165,7 @@
       font-size: 18px;
       line-height: 28px;
       letter-spacing: -0.25px;
-      font-weight: 400;
       margin-bottom: 12px;
-      text-decoration: none;
       color: rgba(255,255,255,0.75);
     }
 
@@ -191,32 +173,58 @@
       width: 100%;
       background-color: #001e12;
       font-family: 'DM Sans', sans-serif;
-      -webkit-font-smoothing: antialiased;
     }
 
-    #footer-outer #copyright {
+    .footer-inner {
       max-width: 1600px;
       margin: 0 auto;
-      padding: 0 70px;
-      height: 25px;
-      display: block;
+      padding: 6px 70px 0;
+      height: 56px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    #copyright {
       font-size: 14px;
       line-height: 28px;
       letter-spacing: -0.25px;
-      font-weight: 400;
       color: #777;
-      box-sizing: border-box;
+      transform: translateY(-4px);
     }
 
-    #footer-outer a {
-      color: #ccc;
-      text-decoration: none;
+    #to-top {
+      width: 36px;
+      height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.25);
+      background-color: rgba(255,255,255,0.02);
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    #to-top i {
+      font-size: 14px;
+      line-height: 1;
+      transition: transform 0.2s ease;
+    }
+
+    #to-top:hover {
+      background-color: rgba(255,255,255,0.08);
+    }
+
+    #to-top:hover i {
+      transform: translateY(-6px);
     }
 
     @media (max-width: 1000px) {
       .header-container,
       .hero-inner,
-      #footer-outer #copyright {
+      .footer-inner {
         padding: 0 28px;
       }
     }
@@ -239,59 +247,62 @@
   </style>
 </head>
 
-<body>
-  <header id="header-outer">
-    <div class="header-container">
-      <span class="site-title">BotName</span>
-      <nav class="header-nav">
-        <a href="#">Features</a>
-        <a href="#">Blog</a>
-        <a href="#">Support</a>
-      </nav>
-    </div>
-  </header>
+<body id="top">
 
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-overlay"></div>
-    <div class="hero-inner">
-      <h1>Stop losing insights in Discord noise.</h1>
-      <p>
-        We give studios the data they need to craft better updates, run smarter events, and build stronger player relationships.
-      </p>
-      <div class="buttons">
-        <button class="btn primary">Take a Tour</button>
-        <button class="btn secondary">Add to Server</button>
-      </div>
-    </div>
-  </section>
+<header id="header-outer">
+  <div class="header-container">
+    <span>BotName</span>
+    <nav class="header-nav">
+      <a href="#">Features</a>
+      <a href="#">Blog</a>
+      <a href="#">Support</a>
+    </nav>
+  </div>
+</header>
 
-  <section class="info-container">
-    <div class="info-grid">
-      <div class="info-block">
-        <h4>Docs & Guides</h4>
-        <a href="#">Blog</a>
-        <a href="#">Status</a>
-      </div>
-      <div class="info-block">
-        <h4>Communities</h4>
-        <a href="#">Cancel / Edit Subscriptions</a>
-        <a href="#">Manage Communities</a>
-        <a href="#">Contact Us</a>
-      </div>
-      <div class="info-block">
-        <h4>Legal</h4>
-        <a href="#">Community Guidelines</a>
-        <a href="#">Terms & Conditions</a>
-        <a href="#">Privacy Policy</a>
-      </div>
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <h1>Stop losing insights in Discord noise.</h1>
+    <p>We give studios the data they need to craft better updates, run smarter events, and build stronger player relationships.</p>
+    <div class="buttons">
+      <button class="btn primary">Take a Tour</button>
+      <button class="btn secondary">Add to Server</button>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer id="footer-outer">
-    <div id="copyright">
-      © 2026 Levellr.
+<section class="info-container">
+  <div class="info-grid">
+    <div class="info-block">
+      <h4>Docs & Guides</h4>
+      <a href="#">Blog</a>
+      <a href="#">Status</a>
     </div>
-  </footer>
+    <div class="info-block">
+      <h4>Communities</h4>
+      <a href="#">Cancel / Edit Subscriptions</a>
+      <a href="#">Manage Communities</a>
+      <a href="#">Contact Us</a>
+    </div>
+    <div class="info-block">
+      <h4>Legal</h4>
+      <a href="#">Community Guidelines</a>
+      <a href="#">Terms & Conditions</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+  </div>
+</section>
+
+<footer id="footer-outer">
+  <div class="footer-inner">
+    <div id="copyright">© 2026 Levellr.</div>
+    <a id="to-top" href="#top" aria-label="Scroll to top">
+      <i role="presentation" class="fa fa-angle-up"></i>
+    </a>
+  </div>
+</footer>
+
 </body>
 </html>
