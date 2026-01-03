@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Login to Levellr</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --foreground: #333333;
+  --subtle: #475b54;
+  --muted: #6b7280;
+  --border: #dbe6e1;
+  --mint-600: #047857;
+  --mint-700: #036b4e;
+  --mint-800: #025e43;
+  --warn-bg: #ffebda;
+  --warn-border: #feba76;
+  --warn-text: #782e00;
+  --radius: 8px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: "Inter", system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+body {
+  min-height: 100vh;
+  background: #ffffff;
+  color: var(--foreground);
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1.5rem, 6vw, 8rem) 1rem;
+}
+
+.card {
+  width: 100%;
+  max-width: 440px;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+}
+
+.logo svg {
+  width: 30px;
+  height: 37px;
+  color: #0b251c;
+}
+
+h1 {
+  margin-top: clamp(1.25rem, 4vw, 2.5rem);
+  font-size: clamp(1.5rem, 4vw, 1.875rem);
+  font-weight: 600;
+  text-align: center;
+}
+
+form {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--subtle);
+}
+
+input {
+  width: 100%;
+  height: 40px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 0 0.75rem;
+  font-size: 0.875rem;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--mint-600);
+  box-shadow: 0 0 0 1px var(--mint-600);
+}
+
+.forgot {
+  align-self: flex-start;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--mint-700);
+  text-decoration: none;
+}
+
+button {
+  height: 40px;
+  border-radius: var(--radius);
+  border: none;
+  background: var(--mint-600);
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.help {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.help a {
+  color: var(--mint-700);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.alert {
+  display: none;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-radius: 10px;
+  background: var(--warn-bg);
+  border: 1px solid var(--warn-border);
+  color: var(--warn-text);
+  font-size: 0.875rem;
+  align-items: flex-start;
+  word-break: break-word;
+}
+
+.alert.show {
+  display: flex;
+}
+
+.alert svg {
+  flex-shrink: 0;
+}
+
+@media (max-height: 650px) {
+  .page {
+    align-items: flex-start;
+  }
+}
+</style>
+</head>
+
+<body>
+<main class="page">
+  <section class="card">
+
+    <div class="logo">
+      <svg viewBox="0 0 777.81 777.81" xmlns="http://www.w3.org/2000/svg">
+        <path fill="currentColor" d="M751.98,535.67l-482.57-.87c-14.27,0-25.83-11.56-25.83-25.81l-.78-483.18c0-14.26-11.56-25.81-25.83-25.81H25.83C11.56,0,0,11.56,0,25.81v726.19c0,14.26,11.57,25.81,25.83,25.81h726.15c14.27,0,25.83-11.56,25.83-25.81v-190.52c0-14.26-11.57-25.81-25.83-25.81Z"/>
+        <path fill="currentColor" d="M445.53,0h306.77C766.38,0,777.81,11.43,777.81,25.51v306.78c0,14.08-11.43,25.51-25.51,25.51h-306.77c-14.08,0-25.51-11.43-25.51-25.51V25.51C420.03,11.43,431.46,0,445.53,0Z"/>
+      </svg>
+    </div>
+
+    <h1>Sign in to your account</h1>
+
+    <form id="loginForm">
+
+      <div>
+        <label>Email</label>
+        <input id="email" type="email" placeholder="Email" required />
+      </div>
+
+      <div>
+        <label>Password</label>
+        <input id="password" type="password" placeholder="Password" required />
+      </div>
+
+      <a href="#" class="forgot">Forgot your password?</a>
+
+      <button type="submit">Sign In</button>
+
+      <p class="help">
+        New here? Email
+        <a href="mailto:support@levellr.io">support@levellr.io</a>
+        to get access.
+      </p>
+
+      <div id="signedOutAlert" class="alert show" role="alert">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="12" r="9"/>
+          <line x1="12" y1="8" x2="12" y2="12"/>
+          <circle cx="12" cy="16" r="1"/>
+        </svg>
+        <div>You have been signed out. Sign in again to continue.</div>
+      </div>
+
+      <div id="errorAlert" class="alert" role="alert">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="12" r="9"/>
+          <line x1="12" y1="8" x2="12" y2="12"/>
+          <circle cx="12" cy="16" r="1"/>
+        </svg>
+        <div>Incorrect email or password</div>
+      </div>
+
+    </form>
+
+  </section>
+</main>
+
+<script>
+const form = document.getElementById("loginForm");
+const signedOutAlert = document.getElementById("signedOutAlert");
+const errorAlert = document.getElementById("errorAlert");
+
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
+
+  if (email !== "admin@levellr.io" || password !== "admin@3") {
+    signedOutAlert.classList.add("show");
+    errorAlert.classList.add("show");
+    return;
+  }
+
+  signedOutAlert.classList.remove("show");
+  errorAlert.classList.remove("show");
+
+  alert("Login successful");
+});
+</script>
+
+</body>
+</html>
